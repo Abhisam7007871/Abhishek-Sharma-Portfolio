@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Abhishek Sharma Portfolio</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Abhishek Sharma's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
-    <header>
-        <h1>Abhishek Sharma</h1>
-        <p>
-            Java Developer | Spring Boot | Mysql
-        </p>
-    </header>
+<header>
+    <h1>Abhishek Sharma</h1>
+    <p>Java Developer | Spring Boot | MySQL</p>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            Bachelor’s of Computer Application from Chhatrapati Shahu Ji Maharaj University
-        </p>
-    </section>
+<section id="about">
+    <h2>About Me</h2>
+    <p>Welcome to my portfolio! I am a passionate Java Developer with a focus on building web applications.</p>
+</section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div th:each="project"
-    </section>
+<section id="projects">
+    <h2>Projects</h2>
+    <div th:each="project : ${projects}">
+        <h3 th:text="${project.name}"></h3>
+        <p th:text="${project.description}"></p>
+        <a th:href="${project.githubLink}" target="_blank">GitHub</a>
+        <a th:href="${project.demoLink}" target="_blank">Live Demo</a>
+    </div>
+</section>
 
+<section id="skills">
+    <h2>Skills</h2>
+    <ul>
+        <li th:each="skill : ${skills}" th:text="${skill.name}"></li>
+    </ul>
+</section>
+
+<section id="contact">
+    <h2>Contact Me</h2>
+    <form method="post" action="/contact">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+</section>
+
+<footer>
+    <p>Connect: <a href="https://linkedin.com/in/abhishek-sharma-1612b3184/">LinkedIn</a> | <a href="https://github.com/Abhisam7007871">GitHub</a></p>
+</footer>
 </body>
 </html>
