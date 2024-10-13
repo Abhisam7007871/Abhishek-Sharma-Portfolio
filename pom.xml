@@ -9,7 +9,6 @@
 		<relativePath/> <!-- lookup parent from repository -->
 
 
-
 	</parent>
 	<groupId>com.avshek</groupId>
 	<artifactId>abhishek-portfolio</artifactId>
